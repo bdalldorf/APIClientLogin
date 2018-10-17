@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -20,7 +23,9 @@ const routes: Routes = [
       RouterModule.forRoot(
         routes,
         { enableTracing: true } // <-- debugging purposes only
-      )
+      ), FormsModule
+      , BrowserModule
+      , HttpClientModule
     ],
     exports: [
       RouterModule,

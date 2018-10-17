@@ -9,14 +9,7 @@ export class HeadersService {
     private sessionState: Observable<SessionState>;
     private session: SessionState;
 
-    constructor(
-        private store: Store<any>,
-    )  {
-        this.sessionState = this.store.select('sessionState');
-        this.sessionState.subscribe( session => {
-            this.session = session;
-        });
-    }
+    constructor()  { }
 
     public getHeaders(headerType: HeaderType): object {
         let headers = new HttpHeaders();
