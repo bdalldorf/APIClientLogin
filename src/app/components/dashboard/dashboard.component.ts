@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getItems(): void {
-    this.items = [];
     this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe(items =>
       this.items = items);
   }
