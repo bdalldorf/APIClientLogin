@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../restservice/rest.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderType } from 'src/app/services/headers.service';
+import { RoutesService } from '../../routeservice/routes.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
   items: any = [];
 
-   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
-
+   constructor(public restService: RestService) {}
 
   ngOnInit() {
     this.getItems();
@@ -20,10 +21,9 @@ export class DashboardComponent implements OnInit {
 
   getItems() {
     this.items = [];
-    this.rest.getItems().subscribe((data: {}) => {
+    this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe((data: {}) => {
       console.log(data);
       this.items = data;
     });
   }
-
 }

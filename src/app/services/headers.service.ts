@@ -4,14 +4,29 @@ import { SessionState } from '../session/session-state';
 import { Observable } from 'rxjs/observable';
 import { HttpHeaders } from '@angular/common/http';
 
+export enum HeaderType {
+    Validation = 1,
+    Token = 2,
+    Standard = 3,
+    Pass = 4,
+    None = 5
+  }
+
 @Injectable()
 export class HeadersService {
     private sessionState: Observable<SessionState>;
     private session: SessionState;
 
-    constructor()  { }
+    constructor(
+       // private store: Store<any>,
+    )  {
+       // this.sessionState = this.store.select('sessionState');
+       // this.sessionState.subscribe( session => {
+       //     this.session = session;
+       // });
+    }
 
-    public getHeaders(headerType: HeaderType): object {
+    public getHeaders(headerType: HeaderType): HttpHeaders {
         let headers = new HttpHeaders();
 
         switch (headerType) {

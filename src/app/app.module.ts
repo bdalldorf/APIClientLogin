@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app.routing';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RoutegetService } from './api/api_routes/apigetroute/routeget.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { RoutegetService } from './api/api_routes/apigetroute/routeget.service';
     HttpClientModule,
   ],
   providers: [
-    RoutegetService
   ],
   bootstrap: [AppComponent]
 })
