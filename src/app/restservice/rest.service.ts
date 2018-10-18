@@ -44,6 +44,9 @@ constructor(private http: HttpClient) {
     return this.http.get(environment.apiUrl + route,
       {headers: this.headerService.getHeaders(header)}).shareReplay();
   }
+
+  post(route: string, header: HeaderType): Observable<any> {
+    return this.http.post(environment.apiUrl + route,
+      {headers: this.headerService.getHeaders(header)}).shareReplay();
+  }
 }
-
-

@@ -19,8 +19,13 @@ export class DashboardComponent implements OnInit {
     this.getItems();
   }
 
-  getItems(): void {
+  public getItems(): void {
     this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe(items =>
+      this.items = items);
+  }
+
+  public saveItem(): void {
+    this.restService.post(RoutesService.apiTestSave, HeaderType.None).subscribe(items =>
       this.items = items);
   }
 }

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class RoutesService {
   static apiTestGetAll = 'apitest/getall';
+  static apiTestSave = 'apitest/save';
 
   constructor() { }
 }
