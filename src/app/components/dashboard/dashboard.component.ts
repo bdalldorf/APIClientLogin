@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../restservice/rest.service';
 import { HeaderType } from 'src/app/services/headers.service';
 import { RoutesService } from '../../routeservice/routes.service';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +11,7 @@ import { RoutesService } from '../../routeservice/routes.service';
 })
 
 export class DashboardComponent implements OnInit {
-
-  items: any = [];
+  items: Item[] = [];
 
    constructor(public restService: RestService) {}
 
@@ -19,11 +19,9 @@ export class DashboardComponent implements OnInit {
     this.getItems();
   }
 
-  getItems() {
+  getItems(): void {
     this.items = [];
-    this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe((data: {}) => {
-      console.log(data);
-      this.items = data;
-    });
+    this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe(items =>
+      this.items = items);
   }
 }

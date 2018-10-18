@@ -34,7 +34,6 @@ import 'rxjs/add/operator/withLatestFrom';
 })
 
 export class RestService {
-  private endPoint: string;
   private headerService: HeadersService;
 
 constructor(private http: HttpClient) {
