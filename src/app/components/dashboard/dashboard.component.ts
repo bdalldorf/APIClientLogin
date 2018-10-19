@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../restservice/rest.service';
 import { HeaderType } from 'src/app/services/headers.service';
 import { RoutesService } from '../../routeservice/routes.service';
-import { Item } from '../../models/item';
+import { Item } from '../../models/item.model';
+import { SessionQuery } from '../../session/session.query';
+import { Session } from 'protractor';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +15,8 @@ import { Item } from '../../models/item';
 export class DashboardComponent implements OnInit {
   items: Item[] = [];
 
-   constructor(public restService: RestService) {}
+   constructor(public restService: RestService) {
+   }
 
   ngOnInit() {
     this.getItems();
