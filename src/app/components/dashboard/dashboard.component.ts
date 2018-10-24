@@ -3,7 +3,6 @@ import { RestService } from '../../restservice/rest.service';
 import { HeaderType } from 'src/app/services/headers.service';
 import { RoutesService } from '../../routeservice/routes.service';
 import { Item } from '../../models/item.model';
-import { SessionQuery } from '../../session/session.query';
 import { Session } from 'protractor';
 
 @Component({

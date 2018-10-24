@@ -1,33 +1,36 @@
-import { Store, StoreConfig, EntityState, EntityStore,  } from '@datorama/akita';
-import { Item } from '../models/item.model';
-import { User} from '../models/user.model';
-​
+import { Injectable } from '@angular/core';
+import { Store, StoreConfig } from '@datorama/akita';
+import * as storage from './storage';
+
 export interface SessionState {
-   token: string;
-   fingerPrint: string;
-   sessionUser: User;
+  token: string;
+  fingerPrint: string;
+  name: string;
 }
-​
-export function createInitialState(): SessionState {
+
+export function createInitialSessionState(): SessionState {
   return {
-    token: '',
-    fingerPrint: '',
-    sessionUser: null
+    token: null,
+    name: null,
+    fingerprint: '',
+    ...storage.getSession(),
   };
 }
-​
+
+@Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'session' })
 export class SessionStore extends Store<SessionState> {
   constructor() {
-    super(createInitialState());
+    super(createInitialSessionState());
   }
-}
 
-export interface ItemState extends EntityState<Item> { }
+  login(session: SessionState) {
+    this.update(session);
+    storage.saveSession(session);
+  }
 
-@StoreConfig({ name: 'item' })
-export class ItemStore extends EntityStore<ItemState, Item> {
-  constructor() {
-    super();
+  logout() {
+    storage.clearSesssion();
+    this.update(createInitialSessionState());
   }
 }
