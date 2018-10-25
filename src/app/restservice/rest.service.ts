@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap, shareReplay } from 'rxjs/operators';
-import { HeadersService, HeaderType} from '../services/headers.service';
+import { HeadersService, HeaderType} from './headers.service';
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/shareReplay';

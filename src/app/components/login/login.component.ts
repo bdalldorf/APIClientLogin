@@ -1,6 +1,6 @@
 import { SessionService } from '../../session/session.service';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl  } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
+      email: new FormControl(),
+      password: new FormControl()
     });
   }
 

@@ -8,6 +8,6 @@ import { mapTo } from 'rxjs/operators';
 export class SessionDataService {
 
   login(creds) {
-    return timer(300).pipe(mapTo({ token: 'token', name: 'Inbal Sinai', fingerPrint: 'fingerprint' }));
+    return timer(300).pipe(mapTo({ token: 'token', name: 'bdalldorf', fingerPrint: 'fingerprint' }));
   }
 }
