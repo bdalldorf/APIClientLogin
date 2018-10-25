@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: SessionService, private router: Router) { }
 
   ngOnInit() {
+    console.log('ngFORM');
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
+    console.log('SUBMIT');
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(() => {
         this.router.navigateByUrl('');
