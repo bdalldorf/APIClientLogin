@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionQuery } from '../../session/session.query';
+import { SessionQuery } from '../../../../session/session.query';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',

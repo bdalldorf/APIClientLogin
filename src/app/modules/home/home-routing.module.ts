@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     {
@@ -33,4 +33,4 @@ const routes: Routes = [
       RouterModule,
     ],
   })
-  export class AppRoutingModule { }
+  export class HomeRoutingModule { }
