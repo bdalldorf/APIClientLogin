@@ -33,7 +33,7 @@ import { HomeRoutingModule } from './home-routing.module';
   ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+
 })
 
 export class HomeModule { }
