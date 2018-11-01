@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngFORM');
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -27,18 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('SUBMIT');
     if (this.loginForm.valid) {
       this.authenticationService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
       .pipe(first())
-      .subscribe(
-          data => {
-              this.router.navigate(['\\']);
-          }); // ,
-         // error => {
-         //     this.error = error;
-         //     this.loading = false;
-         // });
+      .subscribe();
+
     }
   }
 }
