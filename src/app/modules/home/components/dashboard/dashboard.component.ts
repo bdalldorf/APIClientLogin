@@ -19,30 +19,12 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit() {
-   // this.getItems();
-    this.postSometing();
+   this.getItems();
   }
 
   public getItems(): void {
-    this.restService.get(RoutesService.apiTestGetAll, HeaderType.Form).subscribe(items =>
+    this.restService.get(RoutesService.apiTestGetAll, HeaderType.None).subscribe(items =>
       this.items = items);
-  }
-
-  public postSometing(): void {
-    const httpOptions = {
-      headers: {
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      }
-    };
-
-    const id = 11;
-
-    console.log('POST');
-    this.client.post('https://localhost:44346/' + RoutesService.apiTestSave,
-      id,
-      {headers: httpOptions.headers}).subscribe(res => console.log(res));
-    console.log('POSTEND');
   }
 
   public saveItem(): void {

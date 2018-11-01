@@ -46,12 +46,6 @@ constructor(private http: HttpClient) {
   }
 
   post(route: string, header: HeaderType, id: number): Observable<any> {
-    const httpOptions = {
-      headers: {
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      }
-    };
-    return this.http.post(environment.apiUrl + route, id, {headers: httpOptions.headers}).shareReplay();
+    return this.http.post(environment.apiUrl + route, id, {headers: this.headerService.getHeaders(header)}).shareReplay();
   }
 }
