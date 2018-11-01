@@ -12,7 +12,7 @@
   </section>
 </form>
 
-<form clrForm [formGroup]="loginForm">
+<form clrForm [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <clr-input-container>
         <label>Email</label>
         <input clrInput type="email" formControlName="email" />
@@ -26,5 +26,5 @@
         <clr-control-error>Invalid Password</clr-control-error>
     </clr-input-container>
     
-    <button  class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+    <button  class="btn btn-primary" type="submit">Submit</button>
 </form>

@@ -9,7 +9,8 @@ export enum HeaderType {
     Token = 2,
     Standard = 3,
     Pass = 4,
-    None = 5
+    Form = 5,
+    None = 6
   }
 
 @Injectable()
@@ -27,31 +28,47 @@ export class HeadersService {
     }
 
     public getHeaders(headerType: HeaderType): HttpHeaders {
-        let headers = new HttpHeaders();
+        let headers: HttpHeaders;
 
         switch (headerType) {
             case HeaderType.Validation:
-                headers = headers.set('Authorization', `Token ${this.session.token}`);
-                headers = headers.set('X-Auth-Fingerprint', this.session.fingerPrint);
+            headers =  new HttpHeaders({
+                'Authorization': `Token ${this.session.token}`,
+                'X-Auth-Fingerprint': this.session.fingerPrint
+            });
             break;
             case HeaderType.Token:
-                headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
-                headers = headers.set('X-Auth-Fingerprint', this.session.fingerPrint);
-                headers = headers.set('Accept', 'application/json');
+            headers =  new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'Accept': 'application/json'
+            });
             break;
             case HeaderType.Standard:
-                headers = headers.set('X-Auth-Fingerprint', this.session.fingerPrint);
-                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-                headers = headers.set('Accept', '*/*');
+            headers =  new HttpHeaders({
+                'Content-Type': 'application/json; charset=utf-8',
+                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'Accept': '*/*'
+            });
             break;
             case HeaderType.Pass:
-                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-                headers = headers.set('X-Auth-Fingerprint', this.session.fingerPrint);
-                headers = headers.set('Accept', 'application/json');
+            headers =  new HttpHeaders({
+                'Content-Type': 'application/json; charset=utf-8',
+                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'Accept': 'application/json'
+            });
+            break;
+            case HeaderType.Form:
+                headers =  new HttpHeaders({
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+            });
             break;
             case HeaderType.None:
-                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-                headers = headers.set('Accept', '*/*');
+                headers =  new HttpHeaders({
+                    'Content-Type':  'application/json',
+                    'Accept': '*/*'
+            });
             break;
         }
 
