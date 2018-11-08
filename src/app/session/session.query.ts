@@ -10,7 +10,7 @@ export class SessionQuery extends Query<SessionState> {
   name$ = this.select((state) => state.name);
 
   constructor(protected store: SessionStore) {
-    super(store);
+   super(store);
   }
 
   isLoggedIn() {

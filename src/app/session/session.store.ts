@@ -11,8 +11,8 @@ export interface SessionState {
 export function createInitialSessionState(): SessionState {
   return {
     token: null,
+    fingerPrint: null,
     name: null,
-    fingerprint: '',
     ...storage.getSession(),
   };
 }

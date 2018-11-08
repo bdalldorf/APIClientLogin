@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { akitaDevtools } from '@datorama/akita';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: string;
 
-  constructor() {
+  constructor(private ngZone: NgZone) {
     this.title = 'Clarity Project';
+
+    if (!environment.production) {
+      akitaDevtools(ngZone);
+    }
   }
 }

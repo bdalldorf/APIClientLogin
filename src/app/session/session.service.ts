@@ -10,7 +10,7 @@ export class SessionService {
   constructor(private authStore: SessionStore, private authDataService: SessionDataService) { }
 
   login(creds) {
-  return this.authDataService.login(creds).pipe(tap((session) => this.authStore.login(session)));
+    return this.authDataService.login(creds).pipe(tap((session) => this.authStore.login(session)));
   }
 
   logout() {

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-
+import { SessionService } from '../../../../session/session.service';
 import { AuthenticationService } from '../../../../core/services/authentication.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { AuthenticationService } from '../../../../core/services/authentication.
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authService: SessionService, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authenticationService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
-      .pipe(first())
-      .subscribe();
-
+      this.authService.login(this.loginForm.value).subscribe(() => {
+        this.router.navigateByUrl('');
+      });
     }
   }
 }
-

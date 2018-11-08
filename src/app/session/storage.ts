@@ -12,3 +12,5 @@ export function saveSession( session ) {
 export function clearSesssion() {
   localStorage.removeItem(SESSION_KEY);
 }
+
+// https://engineering.datorama.com/the-complete-guide-to-authentication-in-angular-with-akita-dc1b343f7e71
