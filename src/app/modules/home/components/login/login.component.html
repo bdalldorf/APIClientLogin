@@ -1,0 +1,30 @@
+<form clrForm>
+  <section class="form-block">
+      <label>Login</label>
+      <div class="form-group">
+          <label for="lblEmail">Email: </label>
+          <input type="email" id="txtEmail" placeholder="Email" size="45">
+      </div>
+      <div class="form-group">
+          <label for="lblPassword">Password: </label>
+          <input type="password" id="txtPassword" placeholder="Password">
+      </div>
+  </section>
+</form>
+
+<form clrForm [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+    <clr-input-container>
+        <label>Email</label>
+        <input clrInput type="email" formControlName="email" />
+        <clr-control-helper>Email</clr-control-helper>
+        <clr-control-error>Invalid Email</clr-control-error>
+    </clr-input-container>
+    <clr-input-container>
+        <label>Password</label>
+        <input clrInput type="password" formControlName="password" />
+        <clr-control-helper>Password</clr-control-helper>
+        <clr-control-error>Invalid Password</clr-control-error>
+    </clr-input-container>
+    
+    <button  class="btn btn-primary" type="submit">Submit</button>
+</form>
