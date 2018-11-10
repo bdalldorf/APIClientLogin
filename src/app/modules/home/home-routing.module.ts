@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -11,6 +15,7 @@ const routes: Routes = [
         { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
         { path: 'dashboard', component: DashboardComponent },
         { path: 'lessons', component: LessonsComponent },
+        { path: 'login', component: LoginComponent },
       ]
     }
   ];
@@ -20,10 +25,12 @@ const routes: Routes = [
       RouterModule.forRoot(
         routes,
         { enableTracing: true } // <-- debugging purposes only
-      )
+      ), FormsModule
+      , BrowserModule
+      , HttpClientModule
     ],
     exports: [
       RouterModule,
     ],
   })
-  export class AppRoutingModule { }
+  export class HomeRoutingModule { }
