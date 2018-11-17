@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './components/app/app.component';
 import { DashboardComponent } from '../home/components/dashboard/dashboard.component';
 import { LessonsComponent } from '../home/components/lessons/lessons.component';
-import { NavComponent } from '../home/components/nav/nav.component';
 import { LoginComponent } from '../home/components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
@@ -26,7 +25,6 @@ import { HomeRoutingModule } from './home-routing.module';
     AppComponent,
     DashboardComponent,
     LessonsComponent,
-    NavComponent,
     LoginComponent,
     AboutComponent,
     PreferencesComponent
