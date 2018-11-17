@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
-import { SessionState } from '../models/sessionState.model';
+import { SessionState } from '../models/session-state.model';
 
 import * as storage from './storage';
 

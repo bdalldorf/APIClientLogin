@@ -3,8 +3,8 @@ import { HeadersService, HeaderType } from './headers.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RoutesService } from '../../routeservice/routes.service';
 import { Observable } from 'rxjs';
-import { Credentials } from '../../models/credentials.models';
 import { SessionService } from '../../session/session.service';
+import { SessionState } from 'src/app/models/session-state.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class LoginService {
     return token;
   }
 
-  public login(credentials: Credentials) {
-    this.sessionService.login(credentials);
+  public login(sessionState: SessionState) {
+    this.sessionService.login(sessionState);
   }
 }

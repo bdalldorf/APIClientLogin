@@ -1,25 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { SessionStore } from './session.store';
-import { SessionDataService } from './session-data.service';
-import { Credentials } from '../models/credentials.models';
-import { SessionState } from '../models/sessionState.model';
-import { User } from '../models/user.model';
+import { SessionState } from '../models/session-state.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-  constructor(private sessionStore: SessionStore, private sessionDataService: SessionDataService) { }
+  constructor(private sessionStore: SessionStore) { }
 
-  login(credentials: Credentials) {
-      const session: SessionState = new SessionState();
-      session.user = new User();
-      session.user.userName = credentials.username;
-      session.token = credentials.token;
-      session.fingerPrint = credentials.fingerPrint;
-
-      this.sessionStore.login(session);
+  login(sessionState: SessionState) {
+      this.sessionStore.login(sessionState);
   }
 
   logout() {

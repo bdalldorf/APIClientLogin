@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { SessionState } from 'src/app/models/sessionState.model';
+import { SessionState } from 'src/app/models/session-state.model';
 
 export enum HeaderType {
     Validation = 1,

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { HeadersService} from '../../../../core/services/headers.service';
-import { Credentials } from '../../../../models/credentials.models';
 import { LoginService } from 'src/app/core/services/login.service';
+import { SessionState } from 'src/app/models/session-state.model';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import { LoginService } from 'src/app/core/services/login.service';
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  credentials: Credentials;
+  sessionState: SessionState;
   private headerService: HeadersService;
 
   constructor(private loginService: LoginService, private router: Router, private http: HttpClient) {
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
         fingerPrint = data['fingerPrint'];
 
         if (token !== '') {
-          this.credentials = new Credentials(userName, password, token, fingerPrint);
-          this.loginService.login(this.credentials);
+          this.sessionState = new SessionState(userName, token, fingerPrint);
+          this.loginService.login(this.sessionState);
           this.router.navigateByUrl('');
         }
       });

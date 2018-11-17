@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Query, toBoolean } from '@datorama/akita';
+
 import { SessionStore } from './session.store';
-import { SessionState } from '../models/sessionState.model';
+import { SessionState } from '../models/session-state.model';
 
 @Injectable({
   providedIn: 'root'
