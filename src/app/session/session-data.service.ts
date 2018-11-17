@@ -25,7 +25,7 @@ constructor(private http: HttpClient) {
   }
 
   verifyUser(credentials: Credentials): Observable<any> {
-    return this.http.post(environment.apiUrl + RoutesService.apiVerifyLogin, {body: credentials},
+    return this.http.post(RoutesService.apiVerifyLogin, {body: credentials},
       {headers: this.headerService.getHeaders(HeaderType.None)}).shareReplay();
   }
 }

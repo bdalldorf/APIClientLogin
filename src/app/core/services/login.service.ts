@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private sessionService: SessionService, private http: HttpClient, private headerService: HeadersService, ) { }
 
   public getToken(username: string, password: string): Observable<string> {
-    const token: any = this.http.post(environment.apiUrl + RoutesService.apiVerifyLogin, {username, password},
+    const token: any = this.http.post(RoutesService.apiVerifyLogin, {username, password},
       { headers: this.headerService.getHeaders(HeaderType.None)}).shareReplay();
     return token;
   }
