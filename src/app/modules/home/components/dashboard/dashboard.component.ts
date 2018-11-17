@@ -3,8 +3,8 @@ import { RestService } from '../../../../restservice/rest.service';
 import { HeaderType } from 'src/app/core/services/headers.service';
 import { RoutesService } from '../../../../routeservice/routes.service';
 import { Item } from '../../../../models/item.model';
-import { Session } from 'protractor';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SessionQuery, SessionService } from 'src/app/session';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +14,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class DashboardComponent implements OnInit {
   items: Item[] = [];
+  name: Observable<string>;
 
-   constructor(public restService: RestService, private client: HttpClient) {
+   constructor(public restService: RestService, public sessionQuery: SessionQuery, private sessionService: SessionService) {
    }
 
   ngOnInit() {
    this.getItems();
+   this.name = this.sessionQuery.name$;
   }
 
   public getItems(): void {
@@ -30,5 +32,9 @@ export class DashboardComponent implements OnInit {
   public saveItem(): void {
     this.restService.post(RoutesService.apiTestSave, HeaderType.None, 5).subscribe(items =>
       this.items = items);
+  }
+
+  public logout(): void {
+    this.sessionService.logout();
   }
 }

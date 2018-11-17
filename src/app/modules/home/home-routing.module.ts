@@ -1,12 +1,14 @@
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LessonsComponent } from './components/lessons/lessons.component';
-import { LoginComponent } from './components/login/login.component';
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LessonsComponent } from './components/lessons/lessons.component';
+import { LoginComponent } from './components/login/login.component';
+import { AboutComponent } from './components/about/about.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
 
 const routes: Routes = [
     {
@@ -16,6 +18,8 @@ const routes: Routes = [
         { path: 'dashboard', component: DashboardComponent },
         { path: 'lessons', component: LessonsComponent },
         { path: 'login', component: LoginComponent },
+        { path: 'about', component: AboutComponent },
+        { path: 'preferences', component: PreferencesComponent }
       ]
     }
   ];

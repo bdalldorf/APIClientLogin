@@ -6,3 +6,7 @@ dashboard works!
   </ul>
 
   <button class="btn btn-primary" (click)="saveItem()">Post Test</button>
+
+  <div *ngIf="(name | async) as name">
+    {{name}}
+  </div>

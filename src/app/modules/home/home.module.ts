@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeRoutingModule } from './home-routing.module';
 import { LoginService } from 'src/app/core/services/login.service';
 import { HeadersService } from 'src/app/core/services/headers.service';
+import { AboutComponent } from './components/about/about.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HeadersService } from 'src/app/core/services/headers.service';
     DashboardComponent,
     LessonsComponent,
     NavComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
