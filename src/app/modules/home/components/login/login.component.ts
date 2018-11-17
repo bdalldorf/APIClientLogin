@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       let token: string;
       let fingerPrint: string;
 
-      this.authenticationService.getToken(userName, password).subscribe(data => {
+      this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
         token = data['token'];
         fingerPrint = data['fingerPrint'];
 

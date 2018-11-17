@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HeadersService, HeaderType } from '../services/headers.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RoutesService } from '../../routeservice/routes.service';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { RoutesService } from '../../routeservice/routes.service';
 import { SessionService } from '../../session/session.service';
 import { SessionState } from 'src/app/models/session-state.model';
 
@@ -13,10 +14,10 @@ export class AuthenticationService {
 
   constructor(private sessionService: SessionService, private http: HttpClient, private headerService: HeadersService, ) { }
 
-  public getToken(username: string, password: string): Observable<string> {
-    const token: any = this.http.post(RoutesService.apiVerifyLogin, {username, password},
+  public AuthenticateUser(username: string, password: string): Observable<string> {
+    const Authentication: any = this.http.post(RoutesService.apiVerifyLogin, {username, password},
       { headers: this.headerService.getHeaders(HeaderType.None)}).shareReplay();
-    return token;
+    return Authentication;
   }
 
   public login(sessionState: SessionState) {
