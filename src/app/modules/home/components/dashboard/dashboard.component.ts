@@ -14,6 +14,7 @@ import { SessionQuery, SessionService } from 'src/app/session';
 
 export class DashboardComponent implements OnInit {
   items: Item[] = [];
+  number: number;
 
    constructor(public restService: RestService, public sessionQuery: SessionQuery, private sessionService: SessionService) {
    }
@@ -28,7 +29,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public saveItem(): void {
-    this.restService.post(RoutesService.apiTestSave, HeaderType.None, 5).subscribe(items =>
-      this.items = items);
+    this.restService.post(RoutesService.apiTestSave, HeaderType.None, 5).subscribe(item =>
+      this.number = item);
     }
 }
