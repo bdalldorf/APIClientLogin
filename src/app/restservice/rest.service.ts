@@ -19,11 +19,11 @@ constructor(private http: HttpClient) {
   }
 
   get(route: string, header: HeaderType): Observable<any> {
-    return this.http.get(environment.apiUrl + route,
+    return this.http.get(route,
       {headers: this.headerService.getHeaders(header)}).shareReplay();
   }
 
   post(route: string, header: HeaderType, id: number): Observable<any> {
-    return this.http.post(environment.apiUrl + route, id, {headers: this.headerService.getHeaders(header)}).shareReplay();
+    return this.http.post(route, id, {headers: this.headerService.getHeaders(header)}).shareReplay();
   }
 }
