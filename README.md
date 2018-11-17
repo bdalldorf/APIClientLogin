@@ -1,7 +1,5 @@
 # APIClientLogin
 
-Framework: Angular
-
-UI: Clarity Design System
-
-State Management: Akita
+- Framework: Angular
+- UI: Clarity Design System
+- State Management: Akita
