@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { SessionService } from '../../../../session/session.service';
-import { AuthenticationService } from '../../../../core/services/authentication.service';
+import { HeadersService} from '../../../../core/services/headers.service';
+import { Credentials } from '../../../../models/credentials.models';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,10 @@ import { AuthenticationService } from '../../../../core/services/authentication.
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  credentials: Credentials;
+  private headerService: HeadersService;
 
-  constructor(private authService: SessionService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -27,9 +30,26 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(() => {
-        this.router.navigateByUrl('');
+      const userName: string = this.loginForm.get('email').value;
+      const password: string  = this.loginForm.get('password').value;
+      let token: string;
+
+      this.loginService.getToken(userName, password).subscribe(data => {
+        token = data;
+
+        if (token !== '') {
+          this.credentials = new Credentials(userName, password, token, '');
+          this.loginService.login(this.credentials);
+          this.router.navigateByUrl('');
+        }
       });
+
+      // this.verifyUser(this.credentials).subscribe(data => console.log(data['token']));
+      // this.verifyUser(this.credentials).subscribe(data => token = data['token']);
+      // console.log(token);
+      // this.authService.login(this.credentials).subscribe(() => {
+      // this.router.navigateByUrl('');
+      // });
     }
   }
 }

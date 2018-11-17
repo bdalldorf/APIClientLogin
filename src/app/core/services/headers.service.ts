@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SessionState } from '../session/session.store';
 import { Observable } from 'rxjs/observable';
 import { HttpHeaders } from '@angular/common/http';
+import { Credentials } from '../../models/credentials.models';
 
 export enum HeaderType {
     Validation = 1,
@@ -15,8 +15,8 @@ export enum HeaderType {
 
 @Injectable()
 export class HeadersService {
-    private sessionState: Observable<SessionState>;
-    private session: SessionState;
+    private sessionState: Observable<Credentials>;
+    private session: Credentials;
 
     constructor(
        // private store: Store<any>,

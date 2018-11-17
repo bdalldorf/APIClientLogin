@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { LoginService } from 'src/app/core/services/login.service';
+import { HeadersService } from 'src/app/core/services/headers.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeRoutingModule,
   ],
   providers: [
+    LoginService,
+    HeadersService,
   ],
 
 })

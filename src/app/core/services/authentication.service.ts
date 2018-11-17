@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { HeadersService, HeaderType} from '../../restservice/headers.service';
+import { HeadersService, HeaderType} from './headers.service';
 import { HttpHeaders } from '@angular/common/http';
 
 class TokenRequest {

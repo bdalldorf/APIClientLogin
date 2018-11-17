@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../../../restservice/rest.service';
-import { HeaderType } from 'src/app/restservice/headers.service';
+import { HeaderType } from 'src/app/core/services/headers.service';
 import { RoutesService } from '../../../../routeservice/routes.service';
 import { Item } from '../../../../models/item.model';
 import { Session } from 'protractor';
