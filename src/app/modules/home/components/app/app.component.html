@@ -20,9 +20,15 @@
           <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <a href="javascript://" clrDropdownItem>About</a>
-          <a href="javascript://" clrDropdownItem>Preferences</a>
-          <a href="javascript://" clrDropdownItem>Log out</a>
+          <div *ngIf="(isLoggedIn); else loggedOut">
+            <button type="menu" [routerLink]="['/', 'about']" clrDropdownItem>About</button>
+            <button type="menu" [routerLink]="['/', 'preferences']" clrDropdownItem>Preferences</button>
+            <button type="menu" (click)="logout()" clrDropdownItem>Log Out</button>
+          </div>
+          <ng-template #loggedOut>
+            <button type="menu" [routerLink]="['/', 'about']" clrDropdownItem>About</button>
+            <button type="menu" [routerLink]="['/', 'login']" clrDropdownItem>Log In</button>
+          </ng-template>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
@@ -51,7 +57,6 @@
               <label for="tabexample1">Content</label>
               <ul class="nav-list">
                 <li><a class="nav-link" routerLinkActive='active' [routerLink]="['/', 'lessons']">Lessons</a></li>
-                <li><a class="nav-link" [routerLink]="['/', 'login']">Login</a></li>
               </ul>
             </section>
             <section class="nav-group collapsible">

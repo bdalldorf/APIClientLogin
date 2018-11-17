@@ -1,17 +1,3 @@
-<form clrForm>
-  <section class="form-block">
-      <label>Login</label>
-      <div class="form-group">
-          <label for="lblEmail">Email: </label>
-          <input type="email" id="txtEmail" placeholder="Email" size="45">
-      </div>
-      <div class="form-group">
-          <label for="lblPassword">Password: </label>
-          <input type="password" id="txtPassword" placeholder="Password">
-      </div>
-  </section>
-</form>
-
 <form clrForm [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <clr-input-container>
         <label>Email</label>

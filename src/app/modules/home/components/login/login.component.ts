@@ -43,13 +43,6 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('');
         }
       });
-
-      // this.verifyUser(this.credentials).subscribe(data => console.log(data['token']));
-      // this.verifyUser(this.credentials).subscribe(data => token = data['token']);
-      // console.log(token);
-      // this.authService.login(this.credentials).subscribe(() => {
-      // this.router.navigateByUrl('');
-      // });
     }
   }
 }
