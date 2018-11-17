@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HeadersService, HeaderType } from './headers.service';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RoutesService } from '../../routeservice/routes.service';
 import { Observable } from 'rxjs';
 import { Credentials } from '../../models/credentials.models';
@@ -22,10 +21,5 @@ export class LoginService {
 
   public login(credentials: Credentials) {
     this.sessionService.login(credentials);
-  }
-
-  public getFingerPrint(token: string): string {
-    // TODO: connect to API with token
-    return '';
   }
 }

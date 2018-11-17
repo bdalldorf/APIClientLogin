@@ -19,7 +19,7 @@ export class SessionService {
       session.token = credentials.token;
       session.fingerPrint = credentials.fingerPrint;
 
-      return this.sessionStore.login(session);
+      this.sessionStore.login(session);
   }
 
   logout() {

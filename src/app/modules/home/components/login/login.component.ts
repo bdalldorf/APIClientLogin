@@ -34,12 +34,14 @@ export class LoginComponent implements OnInit {
       const userName: string = this.loginForm.get('email').value;
       const password: string  = this.loginForm.get('password').value;
       let token: string;
+      let fingerPrint: string;
 
       this.loginService.getToken(userName, password).subscribe(data => {
-        token = data;
+        token = data['token'];
+        fingerPrint = data['fingerPrint'];
 
         if (token !== '') {
-          this.credentials = new Credentials(userName, password, token, '');
+          this.credentials = new Credentials(userName, password, token, fingerPrint);
           this.loginService.login(this.credentials);
           this.router.navigateByUrl('');
         }
