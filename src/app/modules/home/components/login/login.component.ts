@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { HeadersService} from '../../../../core/services/headers.service';
-import { LoginService } from 'src/app/core/services/login.service';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 import { SessionState } from 'src/app/models/session-state.model';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   sessionState: SessionState;
   private headerService: HeadersService;
 
-  constructor(private loginService: LoginService, private router: Router, private http: HttpClient) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
       let token: string;
       let fingerPrint: string;
 
-      this.loginService.getToken(userName, password).subscribe(data => {
+      this.authenticationService.getToken(userName, password).subscribe(data => {
         token = data['token'];
         fingerPrint = data['fingerPrint'];
 
         if (token !== '') {
           this.sessionState = new SessionState(userName, token, fingerPrint);
-          this.loginService.login(this.sessionState);
+          this.authenticationService.login(this.sessionState);
           this.router.navigateByUrl('');
         }
       });

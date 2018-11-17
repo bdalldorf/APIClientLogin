@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../../../../environments/environment';
 import { SessionQuery, SessionService } from 'src/app/session';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,12 @@ export class AppComponent {
   isLoggedIn: boolean;
   userName: string;
 
-  constructor(private ngZone: NgZone, sessionQuery: SessionQuery, private sessionService: SessionService, private router: Router) {
+  constructor(private ngZone: NgZone
+    , sessionQuery: SessionQuery
+    , private sessionService: SessionService
+    , private router: Router
+    , private authentication: AuthenticationService) {
+
     this.title = 'Clarity Project';
     sessionQuery.isLoggedIn$.subscribe(loggedin => this.isLoggedIn = loggedin);
     sessionQuery.userName$.subscribe(username => this.userName = username);
@@ -26,6 +32,6 @@ export class AppComponent {
   }
 
   public logout(): void {
-    this.sessionService.logout();
+    this.authentication.logout();
   }
 }

@@ -15,7 +15,7 @@ import { AboutComponent } from './components/about/about.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 
 // Service Imports
-import { LoginService } from 'src/app/core/services/login.service';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 import { HeadersService } from 'src/app/core/services/headers.service';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -40,7 +40,7 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeRoutingModule,
   ],
   providers: [
-    LoginService,
+    AuthenticationService,
     HeadersService,
   ],
 

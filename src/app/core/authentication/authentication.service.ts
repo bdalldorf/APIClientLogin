@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HeadersService, HeaderType } from './headers.service';
+import { HeadersService, HeaderType } from '../services/headers.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RoutesService } from '../../routeservice/routes.service';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { SessionState } from 'src/app/models/session-state.model';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthenticationService {
 
   constructor(private sessionService: SessionService, private http: HttpClient, private headerService: HeadersService, ) { }
 
@@ -21,5 +21,9 @@ export class LoginService {
 
   public login(sessionState: SessionState) {
     this.sessionService.login(sessionState);
+  }
+
+  public logout() {
+    this.sessionService.logout();
   }
 }
