@@ -13,7 +13,8 @@
       <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
       <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
     </div>
-    <div class="header-actions">
+    <div class="header-actions" style="align-items: center">
+        <div *ngIf="(isLoggedIn)" style="padding-right: 20px"> {{userName}}</div>
       <clr-dropdown>
         <button class="nav-icon" clrDropdownTrigger>
           <clr-icon shape="cog"></clr-icon>

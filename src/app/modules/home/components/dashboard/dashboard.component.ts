@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { RestService } from '../../../../restservice/rest.service';
 import { HeaderType } from 'src/app/core/services/headers.service';
@@ -15,14 +14,12 @@ import { SessionQuery, SessionService } from 'src/app/session';
 
 export class DashboardComponent implements OnInit {
   items: Item[] = [];
-  name: Observable<string>;
 
    constructor(public restService: RestService, public sessionQuery: SessionQuery, private sessionService: SessionService) {
    }
 
   ngOnInit() {
    this.getItems();
-   this.name = this.sessionQuery.name$;
   }
 
   public getItems(): void {
@@ -33,9 +30,5 @@ export class DashboardComponent implements OnInit {
   public saveItem(): void {
     this.restService.post(RoutesService.apiTestSave, HeaderType.None, 5).subscribe(items =>
       this.items = items);
-  }
-
-  public logout(): void {
-    this.sessionService.logout();
-  }
+    }
 }
