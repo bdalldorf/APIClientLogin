@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import * as storage from './storage';
+
 import { SessionState } from '../models/sessionState.model';
+
+import * as storage from './storage';
 
 export function createInitialCredentialsState(): SessionState {
   return {

@@ -1,9 +1,9 @@
 import { Component, NgZone } from '@angular/core';
 import { akitaDevtools } from '@datorama/akita';
+import { Router } from '@angular/router';
+
 import { environment } from '../../../../../environments/environment';
 import { SessionQuery, SessionService } from 'src/app/session';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',

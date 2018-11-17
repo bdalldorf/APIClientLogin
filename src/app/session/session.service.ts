@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { SessionStore } from './session.store';
 import { SessionDataService } from './session-data.service';
-import { tap } from 'rxjs/operators';
 import { Credentials } from '../models/credentials.models';
 import { SessionState } from '../models/sessionState.model';
 import { User } from '../models/user.model';
