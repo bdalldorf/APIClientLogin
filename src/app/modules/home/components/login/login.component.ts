@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl()
     });
+
+    this.loginForm.get('email').setValue('Test');
+    this.loginForm.get('password').setValue('Password');
   }
 
   onSubmit() {
