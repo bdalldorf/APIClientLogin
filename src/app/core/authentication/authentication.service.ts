@@ -6,17 +6,20 @@ import { Observable } from 'rxjs';
 import { RoutesService } from '../../routeservice/routes.service';
 import { SessionService } from '../../session/session.service';
 import { SessionState } from 'src/app/models/session-state.model';
+import { RestService } from 'src/app/restservice/rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private sessionService: SessionService, private http: HttpClient, private headerService: HeadersService, ) { }
+  constructor(private restService: RestService
+    , private sessionService: SessionService
+    , private http: HttpClient,
+     private headerService: HeadersService, ) { }
 
   public AuthenticateUser(username: string, password: string): Observable<string> {
-    const Authentication: any = this.http.post(RoutesService.apiVerifyLogin, {username, password},
-      { headers: this.headerService.getHeaders(HeaderType.None)}).shareReplay();
+    const Authentication: any = this.restService.post(RoutesService.apiVerifyLogin, HeaderType.None, {username, password}).subscribe();
     return Authentication;
   }
 

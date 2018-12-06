@@ -30,7 +30,7 @@ export class HeadersService {
         switch (headerType) {
             case HeaderType.Validation:
             headers =  new HttpHeaders({
-                'Authorization': `Token ${this.session.token}`,
+                // 'Authorization': `Token ${this.session.token}`,
                 'X-Auth-Fingerprint': this.session.fingerPrint
             });
             break;

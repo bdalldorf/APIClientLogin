@@ -5,10 +5,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class RoutesService {
-  static apiVerifyLogin: string = environment.apiUrl + 'authenticate/login';
+  static apiVerifyLogin: string = environment.apiUrl + 'authenticate/web/login';
   static apiGetFingerPrint: string =  environment.apiUrl + 'authenticate/getfingerprint';
   static apiTestGetAll: string  = environment.apiUrl + 'apitest/getall';
   static apiTestSave: string = environment.apiUrl + 'apitest/save';
+  static apiExampleGetAll: string  = environment.apiUrl + 'example/getall/';
 
   constructor() { }
 }

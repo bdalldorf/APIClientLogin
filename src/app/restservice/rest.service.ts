@@ -20,10 +20,10 @@ constructor(private http: HttpClient) {
 
   get(route: string, header: HeaderType): Observable<any> {
     return this.http.get(route,
-      {headers: this.headerService.getHeaders(header)}).shareReplay();
+      {headers: this.headerService.getHeaders(header), withCredentials: true}).shareReplay();
   }
 
-  post(route: string, header: HeaderType, id: number): Observable<any> {
-    return this.http.post(route, id, {headers: this.headerService.getHeaders(header)}).shareReplay();
+  post(route: string, header: HeaderType, payload: any): Observable<any> {
+    return this.http.post(route, payload, {headers: this.headerService.getHeaders(header), withCredentials: true}).shareReplay();
   }
 }

@@ -33,19 +33,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const userName: string = this.loginForm.get('email').value;
       const password: string  = this.loginForm.get('password').value;
-      let token: string;
-      let fingerPrint: string;
+      // let fingerPrint: string;
+      this.authenticationService.AuthenticateUser(userName, password);
+      // this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
+      //   fingerPrint = data['fingerPrint'];
 
-      this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
-        token = data['token'];
-        fingerPrint = data['fingerPrint'];
-
-        if (token !== '') {
-          this.sessionState = new SessionState(userName, token, fingerPrint);
-          this.authenticationService.login(this.sessionState);
-          this.router.navigateByUrl('');
-        }
-      });
+      //   if (fingerPrint !== '') {
+      //     this.sessionState = new SessionState(userName, fingerPrint);
+      //     this.authenticationService.login(this.sessionState);
+      //     this.router.navigateByUrl('');
+      //   }
+      // });
     }
   }
 }

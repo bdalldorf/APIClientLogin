@@ -8,7 +8,6 @@ import * as storage from './storage';
 export function createInitialCredentialsState(): SessionState {
   return {
     user: null,
-    token: null,
     fingerPrint: null,
     ...storage.getSession(),
   };

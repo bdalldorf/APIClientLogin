@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ClarityModule, ClrFormsNextModule  } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 
 // Component Imports
 import { AppComponent } from './components/app/app.component';
@@ -19,6 +19,7 @@ import { AuthenticationService } from 'src/app/core/authentication/authenticatio
 import { HeadersService } from 'src/app/core/services/headers.service';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,10 +39,12 @@ import { HomeRoutingModule } from './home-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     HomeRoutingModule,
+    HttpClientXsrfModule
   ],
   providers: [
     AuthenticationService,
     HeadersService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
   ],
 
 })
