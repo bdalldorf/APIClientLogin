@@ -50,7 +50,7 @@ import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
   providers: [
     AuthenticationService,
     HeadersService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
