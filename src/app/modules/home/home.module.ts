@@ -13,14 +13,18 @@ import { LessonsComponent } from '../home/components/lessons/lessons.component';
 import { LoginComponent } from '../home/components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 // Service Imports
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 import { HeadersService } from 'src/app/core/services/headers.service';
 
+// Modules
 import { HomeRoutingModule } from './home-routing.module';
+
+// Interceptors
 import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.interceptor';
-import { AlertComponent } from './components/alert/alert.component';
+import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,7 @@ import { AlertComponent } from './components/alert/alert.component';
     AuthenticationService,
     HeadersService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
 })
