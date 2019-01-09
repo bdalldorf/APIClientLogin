@@ -20,6 +20,7 @@ import { HeadersService } from 'src/app/core/services/headers.service';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.interceptor';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.intercep
     LessonsComponent,
     LoginComponent,
     AboutComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

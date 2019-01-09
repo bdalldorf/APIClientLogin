@@ -12,16 +12,19 @@ import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 
+// Guard Imports
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+
 const routes: Routes = [
     {
       path: '',
       children: [
         { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-        { path: 'dashboard', component: DashboardComponent },
-        { path: 'lessons', component: LessonsComponent },
         { path: 'login', component: LoginComponent },
         { path: 'about', component: AboutComponent },
-        { path: 'preferences', component: PreferencesComponent }
+        { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+        { path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard] },
+        { path: 'preferences', component: PreferencesComponent, canActivate: [AuthGuard] }
       ]
     }
   ];

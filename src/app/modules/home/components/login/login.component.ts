@@ -36,8 +36,11 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const userName: string = this.loginForm.get('email').value;
       const password: string  = this.loginForm.get('password').value;
-      // let fingerPrint: string;
+      let fingerPrint: string;
+      fingerPrint = 'Test';
       this.authenticationService.AuthenticateUser(userName, password);
+      this.sessionState = new SessionState(userName, fingerPrint);
+      this.authenticationService.login(this.sessionState);
       // this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
       //   fingerPrint = data['fingerPrint'];
 
