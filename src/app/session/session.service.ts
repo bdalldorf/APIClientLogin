@@ -27,10 +27,7 @@ export class SessionService {
   }
 
   login(sessionState: SessionState) {
-    const user: User = sessionState.user;
-    console.log('Login User: ' + user.userName);
-    const session = createSessionState({ user });
-    this.sessionStore.add(session);
+    this.sessionStore.add(sessionState);
   }
 
   // logout(id: ID) {

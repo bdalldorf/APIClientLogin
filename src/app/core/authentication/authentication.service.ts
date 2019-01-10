@@ -21,6 +21,7 @@ export class AuthenticationService {
 
   public AuthenticateUser(username: string, password: string): Observable<string> {
     const Authentication: any = this.restService.post(RoutesService.apiVerifyLogin, HeaderType.None, {username, password});
+    console.log('Authenticate User Verified');
     return Authentication;
   }
 

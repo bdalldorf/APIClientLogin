@@ -7,10 +7,10 @@ export interface SessionState {
     fingerPrint: string;
 }
 
-export function createSessionState({ user }: Partial<SessionState>) {
+export function createSessionState() {
     return {
         id: guid(),
-        user,
+        user: new User(),
         fingerPrint: guid()
     } as SessionState;
 }
