@@ -19,7 +19,7 @@ export class AuthenticationService {
     , private http: HttpClient,
      private headerService: HeadersService, ) { }
 
-  public AuthenticateUser(username: string, password: string): Observable<string> {
+  public AuthenticateUser(username: string, password: string): Observable<any> {
     const Authentication: any = this.restService.post(RoutesService.apiVerifyLogin, HeaderType.None, {username, password});
     console.log('Authenticate User Verified');
     return Authentication;

@@ -11,6 +11,6 @@ export function createSessionState() {
     return {
         id: guid(),
         user: new User(),
-        fingerPrint: guid()
+        fingerPrint: ''
     } as SessionState;
 }
