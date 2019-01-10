@@ -41,9 +41,11 @@ export class LoginComponent implements OnInit {
       // this.authenticationService.AuthenticateUser(userName, password);
       // this.sessionState = new SessionState(userName, fingerPrint);
       // this.authenticationService.login(this.sessionState);
+      console.log('Authenticate User Pre Subscribe');
       this.authenticationService.AuthenticateUser(userName, password).subscribe(d => {
       //   fingerPrint = data['fingerPrint'];
       //   if (fingerPrint !== '') {
+        console.log('Authenticate User Post Subscribe');
            this.sessionState.user.userName = userName;
            this.authenticationService.login(this.sessionState);
       //     this.router.navigateByUrl('');

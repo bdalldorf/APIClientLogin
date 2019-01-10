@@ -25,6 +25,7 @@ export class AuthenticationService {
   }
 
   public login(sessionState: SessionState) {
+    console.log('Authentication Login User: ');
     this.sessionService.login(sessionState);
   }
 
