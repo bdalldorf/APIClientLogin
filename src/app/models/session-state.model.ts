@@ -1,14 +1,16 @@
-import { ID } from '@datorama/akita';
+import { ID, guid } from '@datorama/akita';
 import { User } from './user.model';
 ​
-export class SessionState {
+export interface SessionState {
     id: ID;
     user: User;
     fingerPrint: string;
+}
 
-    constructor(userName: string, fingerPrint: string) {
-        this.user = new User();
-        this.user.userName = userName;
-        this.fingerPrint = fingerPrint;
-    }
+export function createSessionState({ user }: Partial<SessionState>) {
+    return {
+        id: guid(),
+        user,
+        fingerPrint: guid()
+    } as SessionState;
 }

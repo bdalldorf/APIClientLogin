@@ -38,18 +38,17 @@ export class LoginComponent implements OnInit {
       const password: string  = this.loginForm.get('password').value;
       let fingerPrint: string;
       fingerPrint = 'Test';
-      this.authenticationService.AuthenticateUser(userName, password);
-      this.sessionState = new SessionState(userName, fingerPrint);
-      this.authenticationService.login(this.sessionState);
-      // this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
+      // this.authenticationService.AuthenticateUser(userName, password);
+      // this.sessionState = new SessionState(userName, fingerPrint);
+      // this.authenticationService.login(this.sessionState);
+      this.authenticationService.AuthenticateUser(userName, password).subscribe(d => {
       //   fingerPrint = data['fingerPrint'];
-
       //   if (fingerPrint !== '') {
-      //     this.sessionState = new SessionState(userName, fingerPrint);
-      //     this.authenticationService.login(this.sessionState);
+           this.sessionState.user.userName = userName;
+           this.authenticationService.login(this.sessionState);
       //     this.router.navigateByUrl('');
       //   }
-      // });
+      });
     }
   }
 }

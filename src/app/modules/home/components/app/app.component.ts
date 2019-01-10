@@ -24,7 +24,7 @@ export class AppComponent {
 
     this.title = 'Clarity Project';
     sessionQuery.isLoggedIn$.subscribe(loggedin => this.isLoggedIn = loggedin);
-    sessionQuery.userName$.subscribe(username => this.userName = username);
+    // sessionQuery.userName$.subscribe(username => this.userName = username);
 
     if (!environment.production) {
       akitaDevtools(ngZone);

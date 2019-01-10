@@ -7,6 +7,7 @@ import { RoutesService } from '../../routeservice/routes.service';
 import { SessionService } from '../../session/session.service';
 import { SessionState } from 'src/app/models/session-state.model';
 import { RestService } from 'src/app/restservice/rest.service';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthenticationService {
      private headerService: HeadersService, ) { }
 
   public AuthenticateUser(username: string, password: string): Observable<string> {
-    const Authentication: any = this.restService.post(RoutesService.apiVerifyLogin, HeaderType.None, {username, password}).subscribe();
+    const Authentication: any = this.restService.post(RoutesService.apiVerifyLogin, HeaderType.None, {username, password});
     return Authentication;
   }
 
@@ -27,7 +28,7 @@ export class AuthenticationService {
     this.sessionService.login(sessionState);
   }
 
-  public logout() {
+   public logout() {
     this.sessionService.logout();
-  }
+   }
 }

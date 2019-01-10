@@ -1,32 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Store, StoreConfig } from '@datorama/akita';
-
 import { SessionState } from '../models/session-state.model';
+import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
+import { VISIBILITY_FILTER } from '../filter/filter.model';
+import { Injectable } from '@angular/core';
 
 import * as storage from './storage';
 
-export function createInitialCredentialsState(): SessionState {
-  return {
-    user: null,
-    fingerPrint: null,
-    ...storage.getSession(),
-  };
-}
 
-@Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'session' })
-export class SessionStore extends Store<SessionState> {
+export interface State extends EntityState<SessionState> {}
+
+@Injectable({
+  providedIn: 'root'
+})
+@StoreConfig({ name: 'SessionState' })
+export class SessionStore extends EntityStore<State, SessionState> {
   constructor() {
-    super(createInitialCredentialsState());
-  }
-
-  login(sessionState: SessionState) {
-    this.update(sessionState);
-    storage.saveSession(sessionState);
-  }
-
-  logout() {
-    storage.clearSesssion();
-    this.update(createInitialCredentialsState());
+    super();
   }
 }
