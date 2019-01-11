@@ -26,6 +26,7 @@ import { HomeRoutingModule } from './home-routing.module';
 // Interceptors
 import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.interceptor';
 import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
+import { SessionQuery, SessionStore } from 'src/app/state';
 
 @NgModule({
   declarations: [

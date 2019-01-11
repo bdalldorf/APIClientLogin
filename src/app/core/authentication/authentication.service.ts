@@ -4,10 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { RoutesService } from '../../routeservice/routes.service';
-import { SessionService } from '../../session/session.service';
-import { SessionState } from 'src/app/models/session-state.model';
 import { RestService } from 'src/app/restservice/rest.service';
-import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +12,6 @@ import { User } from 'src/app/models/user.model';
 export class AuthenticationService {
 
   constructor(private restService: RestService
-    , private sessionService: SessionService
     , private http: HttpClient,
      private headerService: HeadersService, ) { }
 
@@ -24,13 +20,4 @@ export class AuthenticationService {
     console.log('Authenticate User Verified');
     return Authentication;
   }
-
-  public login(sessionState: SessionState) {
-    console.log('Authentication Login User: ');
-    this.sessionService.login(sessionState);
-  }
-
-   public logout() {
-    this.sessionService.logout();
-   }
 }

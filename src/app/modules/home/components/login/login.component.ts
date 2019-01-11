@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { HeadersService} from '../../../../core/services/headers.service';
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
-import { SessionState, createSessionState } from 'src/app/models/session-state.model';
-import { User } from 'src/app/models/user.model';
+import { SessionStore, User, SessionState } from 'src/app/state';
+
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,7 @@ import { User } from 'src/app/models/user.model';
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  sessionStore: SessionStore;
   sessionState: SessionState;
   private headerService: HeadersService;
 
@@ -43,17 +44,14 @@ export class LoginComponent implements OnInit {
       // this.authenticationService.login(this.sessionState);
       console.log('Authenticate User Pre Subscribe: ' + userName);
       this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
+      this.sessionStore = new SessionStore();
+      // this.sessionState.user.userName = data['userName'];
+      // this.sessionState.user.firstName = data['firstName'];
+      // this.sessionState.user.lastName = data['lastName'];
+      // this.sessionState.user.fingerPrint = data['fingerPrint'];
 
-      const userNameVerified: string = data['userName'];
-      const fingerPrint = data['fingerPrint'];
-
-      if (fingerPrint !== '') {
-        this.sessionState = createSessionState();
-        this.sessionState.user.userName = userNameVerified;
-        this.sessionState.fingerPrint = fingerPrint;
-        this.authenticationService.login(this.sessionState);
+        this.sessionStore.login(data);
       //     this.router.navigateByUrl('');
-      }
     });
   }
 }

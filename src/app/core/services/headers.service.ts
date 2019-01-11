@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { SessionState } from 'src/app/models/session-state.model';
+import { SessionState } from 'src/app/state';
 
 export enum HeaderType {
     Validation = 1,
@@ -31,27 +31,27 @@ export class HeadersService {
             case HeaderType.Validation:
             headers =  new HttpHeaders({
                 // 'Authorization': `Token ${this.session.token}`,
-                'X-Auth-Fingerprint': this.session.fingerPrint
+                'X-Auth-Fingerprint': this.session.user.fingerPrint
             });
             break;
             case HeaderType.Token:
             headers =  new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'X-Auth-Fingerprint': this.session.user.fingerPrint,
                 'Accept': 'application/json'
             });
             break;
             case HeaderType.Standard:
             headers =  new HttpHeaders({
                 'Content-Type': 'application/json; charset=utf-8',
-                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'X-Auth-Fingerprint':  this.session.user.fingerPrint,
                 'Accept': '*/*'
             });
             break;
             case HeaderType.Pass:
             headers =  new HttpHeaders({
                 'Content-Type': 'application/json; charset=utf-8',
-                'X-Auth-Fingerprint': this.session.fingerPrint,
+                'X-Auth-Fingerprint':  this.session.user.fingerPrint,
                 'Accept': 'application/json'
             });
             break;

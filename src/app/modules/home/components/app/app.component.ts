@@ -3,7 +3,7 @@ import { akitaDevtools } from '@datorama/akita';
 import { Router } from '@angular/router';
 
 import { environment } from '../../../../../environments/environment';
-import { SessionQuery, SessionService } from 'src/app/session';
+import { SessionQuery, SessionState, SessionStore,  } from 'src/app/state';
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 
 @Component({
@@ -18,13 +18,13 @@ export class AppComponent {
 
   constructor(private ngZone: NgZone
     , sessionQuery: SessionQuery
-    , private sessionService: SessionService
+    , private sessionStore: SessionStore
     , private router: Router
     , private authentication: AuthenticationService) {
 
     this.title = 'Clarity Project';
     sessionQuery.isLoggedIn$.subscribe(loggedin => this.isLoggedIn = loggedin);
-    // sessionQuery.userName$.subscribe(username => this.userName = username);
+    sessionQuery.loggedInUserName$.subscribe(user => this.userName = user);
 
     if (!environment.production) {
       akitaDevtools(ngZone);
@@ -32,6 +32,6 @@ export class AppComponent {
   }
 
   public logout(): void {
-    this.authentication.logout();
+    this.sessionStore.logout();
   }
 }
