@@ -18,8 +18,6 @@ export class AppComponent {
 
   constructor(private ngZone: NgZone
     , sessionQuery: SessionQuery
-    , private sessionStore: SessionStore
-    , private router: Router
     , private authentication: AuthenticationService) {
 
     this.title = 'Clarity Project';
@@ -32,6 +30,6 @@ export class AppComponent {
   }
 
   public logout(): void {
-    this.sessionStore.logout();
+    this.authentication.logout();
   }
 }

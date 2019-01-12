@@ -17,8 +17,6 @@ import { SessionStore, User, SessionState } from 'src/app/state';
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  sessionStore: SessionStore;
-  sessionState: SessionState;
   private headerService: HeadersService;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private http: HttpClient) {
@@ -39,20 +37,7 @@ export class LoginComponent implements OnInit {
       const userName: string = this.loginForm.get('email').value;
       const password: string  = this.loginForm.get('password').value;
 
-      // this.authenticationService.AuthenticateUser(userName, password);
-      // this.sessionState = new SessionState(userName, fingerPrint);
-      // this.authenticationService.login(this.sessionState);
-      console.log('Authenticate User Pre Subscribe: ' + userName);
-      this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
-      this.sessionStore = new SessionStore();
-      // this.sessionState.user.userName = data['userName'];
-      // this.sessionState.user.firstName = data['firstName'];
-      // this.sessionState.user.lastName = data['lastName'];
-      // this.sessionState.user.fingerPrint = data['fingerPrint'];
-
-        this.sessionStore.login(data);
-      //     this.router.navigateByUrl('');
-    });
+      this.authenticationService.AuthenticateUser(userName, password);
   }
 }
 }
