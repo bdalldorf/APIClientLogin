@@ -54,7 +54,7 @@ import { SessionQuery, SessionStore } from 'src/app/state';
     AuthenticationService,
     HeadersService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
 })
