@@ -4,7 +4,7 @@ import { RestService } from '../../../../restservice/rest.service';
 import { HeaderType } from 'src/app/core/services/headers.service';
 import { RoutesService } from '../../../../routeservice/routes.service';
 import { Item } from '../../../../models/item.model';
-import { SessionQuery, SessionService } from 'src/app/session';
+import { SessionQuery } from 'src/app/state';
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
@@ -12,12 +12,11 @@ import { SessionQuery, SessionService } from 'src/app/session';
 })
 export class LessonsComponent implements OnInit {
   items: Item[] = [];
-  constructor(public restService: RestService, public sessionQuery: SessionQuery, private sessionService: SessionService) {
+  constructor(public restService: RestService, public sessionQuery: SessionQuery) {
   }
   ngOnInit() {
     this.getItems();
   }
-
 
   public getItems(): void {
     this.restService.get(RoutesService.apiExampleGetAll, HeaderType.None).subscribe(items =>

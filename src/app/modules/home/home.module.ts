@@ -14,6 +14,7 @@ import { LoginComponent } from '../home/components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { SessionFiltersComponent } from 'src/app/filter/filters.component';
 
 // Service Imports
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
@@ -25,6 +26,7 @@ import { HomeRoutingModule } from './home-routing.module';
 // Interceptors
 import { HttpXsrfInterceptor } from 'src/app/core/interceptors/HttpXsrf.interceptor';
 import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
+import { SessionQuery, SessionStore } from 'src/app/state';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
     LoginComponent,
     AboutComponent,
     PreferencesComponent,
-    AlertComponent
+    AlertComponent,
+    SessionFiltersComponent
   ],
   imports: [
     BrowserModule,

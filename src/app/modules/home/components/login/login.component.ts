@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { HeadersService} from '../../../../core/services/headers.service';
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
-import { SessionState } from 'src/app/models/session-state.model';
+import { SessionStore, User, SessionState } from 'src/app/state';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,6 @@ import { SessionState } from 'src/app/models/session-state.model';
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  sessionState: SessionState;
   private headerService: HeadersService;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private http: HttpClient) {
@@ -36,20 +36,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const userName: string = this.loginForm.get('email').value;
       const password: string  = this.loginForm.get('password').value;
-      let fingerPrint: string;
-      fingerPrint = 'Test';
-      this.authenticationService.AuthenticateUser(userName, password);
-      this.sessionState = new SessionState(userName, fingerPrint);
-      this.authenticationService.login(this.sessionState);
-      // this.authenticationService.AuthenticateUser(userName, password).subscribe(data => {
-      //   fingerPrint = data['fingerPrint'];
 
-      //   if (fingerPrint !== '') {
-      //     this.sessionState = new SessionState(userName, fingerPrint);
-      //     this.authenticationService.login(this.sessionState);
-      //     this.router.navigateByUrl('');
-      //   }
-      // });
-    }
+      this.authenticationService.AuthenticateUser(userName, password);
   }
+}
 }
